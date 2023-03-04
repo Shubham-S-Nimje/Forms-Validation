@@ -7,8 +7,13 @@ import Button from '../UI/Button/Button';
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState('');
   const [emailIsValid, setEmailIsValid] = useState();
+
+  const [enteredCol, setEnteredCol] = useState('');
+  const [collIsValid, setColIsValid] = useState();
+
   const [enteredPassword, setEnteredPassword] = useState('');
   const [passwordIsValid, setPasswordIsValid] = useState();
+
   const [formIsValid, setFormIsValid] = useState(false);
 
   const emailChangeHandler = (event) => {
@@ -16,6 +21,14 @@ const Login = (props) => {
 
     setFormIsValid(
       event.target.value.includes('@') && enteredPassword.trim().length > 6
+    );
+  };
+
+  const colChangeHandler = (event) => {
+    setEnteredCol(event.target.value);
+
+    setFormIsValid(
+      enteredCol.trim().length > 5
     );
   };
 
@@ -29,6 +42,10 @@ const Login = (props) => {
 
   const validateEmailHandler = () => {
     setEmailIsValid(enteredEmail.includes('@'));
+  };
+
+  const validatecolHandler = () => {
+    setColIsValid(enteredCol.trim().length > 5);
   };
 
   const validatePasswordHandler = () => {
@@ -57,6 +74,22 @@ const Login = (props) => {
             onBlur={validateEmailHandler}
           />
         </div>
+
+        <div
+          className={`${classes.control} ${
+            collIsValid === false ? classes.invalid : ''
+          }`}
+        >
+          <label htmlFor="college">College</label>
+          <input
+            type="text"
+            id="college"
+            value={enteredCol}
+            onChange={colChangeHandler}
+            onBlur={validatecolHandler}
+          />
+        </div>
+
         <div
           className={`${classes.control} ${
             passwordIsValid === false ? classes.invalid : ''
