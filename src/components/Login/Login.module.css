@@ -43,10 +43,6 @@
   background: #fbdada;
 }
 
-.actions {
-  text-align: center;
-}
-
 @media (min-width: 768px) {
   .control {
     align-items: center;
@@ -54,3 +50,7 @@
   }
 
 }
+.actions {
+  text-align: center;
+}
+
